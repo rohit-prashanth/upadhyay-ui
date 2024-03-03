@@ -1,0 +1,26 @@
+<div class="main">
+    <div class="form-container">
+        <form [formGroup]="loginForm">
+            <div class="mb-3">
+                <label for="userId" class="form-label">User Name</label>
+                <input type="text" class="form-control" id="userId" placeholder="User Name"
+                formControlName="userName">
+                <div class="text-danger" *ngIf="(loginForm.controls['userName'].touched || submitted) &&
+                  loginForm.controls['userName'].hasError('required')">
+                    User Name is required
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" formControlName="password" placeholder="Password">
+                <div class="text-danger" *ngIf="(loginForm.controls['password'].touched || submitted) &&
+                  loginForm.controls['password'].hasError('required')">
+                    Password is required
+                </div>
+            </div>
+            <div class="mb-3 text-center">
+                <button class="btn btn-primary" (click)="onSubmit()">Login</button>
+            </div>
+        </form>
+    </div>
+  </div>
