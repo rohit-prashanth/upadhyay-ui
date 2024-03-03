@@ -1,0 +1,5 @@
+class HTTPInterceptorService {
+    public taskBeforeCall(){
+        
+    }
+}
