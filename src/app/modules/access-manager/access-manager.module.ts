@@ -1,23 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoginComponent } from './login.component';
-// import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AccessManagerComponent } from './access-manager.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { RouterModule, Routes } from '@angular/router';
+import { UserComponent } from './user/user.component';
 
-const routes:Routes = [
-  {path:'', component: LoginComponent}
+const routes: Routes = [
+  {path:'', component: AccessManagerComponent},
+  {path:'users', component: UserComponent}
 ]
 
 @NgModule({
   declarations: [
-    LoginComponent
+    AccessManagerComponent,
+    UserComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
     RouterModule.forChild(routes)
-  ],
-  exports:[LoginComponent]
+  ]
 })
-export class LoginModule { }
+export class AccessManagerModule { }
