@@ -4,12 +4,13 @@ import { FormBuilder, Validators, FormGroup, FormControl   } from '@angular/form
 import { Router } from '@angular/router';
 import { LocalStorageHandlerService } from 'src/app/shared/service/localstoragehandlerService';
 import { commonConstants } from 'src/app/utils/commonconstant';
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  providers:[LocalStorageHandlerService]
+  providers:[LocalStorageHandlerService, LoginService]
 })
 export class LoginComponent implements OnInit {
   public loginForm!: FormGroup;
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private http: HttpClient,
     private localStoargeHandler: LocalStorageHandlerService,
-    private router: Router
+    private router: Router,
+    private loginService: LoginService
     ) {}
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -34,7 +36,7 @@ export class LoginComponent implements OnInit {
         userName: this.loginForm.controls['userName'].value,
         password: this.loginForm.controls['password'].value
       }
-      this.http.post('http://127.0.0.1:8000/login/', payload).subscribe((res: any)=>{
+      this.loginService.postUserData(payload).subscribe((res: any)=>{
         if(!res.hasOwnProperty('error')){
           console.log(res, 'login response');
           this.localStoargeHandler.setData(commonConstants.storageKeys.authToken, res.token.access);

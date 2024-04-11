@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ConfigService } from 'src/app/shared/service/config.service';
 import { LocalStorageHandlerService } from 'src/app/shared/service/localstoragehandlerService';
 import { commonConstants } from 'src/app/utils/commonconstant';
 
@@ -11,7 +12,7 @@ export class UserService {
     ) { }
 
   public getUserData(authToken: any){
-    const apiUrl = 'http://127.0.0.1:8000/view-user/';
+    const apiUrl = ConfigService.getInstance().getConfigObject().APIURL.viewUser;
     const bearerToken = `Bearer ${authToken}`
     const httpHeaders: HttpHeaders = new HttpHeaders({
       "Authorization": bearerToken

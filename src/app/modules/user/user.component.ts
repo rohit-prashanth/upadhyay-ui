@@ -11,6 +11,9 @@ import { commonConstants } from 'src/app/utils/commonconstant';
 })
 export class UserComponent implements OnInit {
   public userData: any;
+  public config = {
+    navLabels: []
+}
   constructor( private userService: UserService,
     private localStorageHandler: LocalStorageHandlerService){}
   ngOnInit(){

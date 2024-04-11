@@ -5,3 +5,18 @@
         }
     }
 }
+
+.header-container{
+    padding: 10px 20px;
+    background-color: rgb(69, 105, 204);
+}
+.dropdown-toggle::after{
+    border: none;
+}
+.navbar {
+    .navbar-nav {
+        .dropdown-menu{
+            left:-120px
+        }
+    }
+}
